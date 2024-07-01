@@ -46,7 +46,7 @@ class OnnxTextEncoder {
     final tokenize = _tokenizer.tokenize(text);
     final data = List.filled(1, Int32List.fromList(tokenize));
     final inputOrt = OrtValueTensor.createTensorWithDataList(data, [1, 77]);
-    final inputs = {'input': inputOrt};
+    final inputs = {'text': inputOrt};
     final session = OrtSession.fromAddress(address);
     final outputs = session.run(runOptions, inputs);
     final embedding = (outputs[0]?.value as List<List<double>>)[0];
@@ -54,7 +54,7 @@ class OnnxTextEncoder {
     for (int i = 0; i < 512; i++) {
       textNormalization += embedding[i] * embedding[i];
     }
-    
+
     final double sqrtTextNormalization = sqrt(textNormalization);
     for (int i = 0; i < 512; i++) {
       embedding[i] = embedding[i] / sqrtTextNormalization;

@@ -7,10 +7,11 @@ import 'package:photos/services/machine_learning/semantic_search/frameworks/onnx
 import "package:photos/utils/image_isolate.dart";
 
 class ONNX extends MLFramework {
-  static const kModelBucketEndpoint = "https://models.ente.io/";
-  static const kImageModel = "clip-image-vit-32-float32.onnx";
+  static const kModelBucketEndpoint =
+      "https://huggingface.co/immich-app/ViT-B-32__openai/resolve/main/";
+  static const kImageModel = "visual/model.onnx";
   // static const kTextModel = "clip-text-vit-32-uint8.onnx"; // TODO: check later whether to revert back or not
-  static const kTextModel = "clip-text-vit-32-float32-int32.onnx";
+  static const kTextModel = "textual/model.onnx";
 
   final _computer = Computer.shared();
   final _logger = Logger("ONNX");

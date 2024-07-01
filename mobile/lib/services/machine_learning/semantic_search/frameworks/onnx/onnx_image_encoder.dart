@@ -35,7 +35,7 @@ class OnnxImageEncoder {
 
     final inputOrt =
         OrtValueTensor.createTensorWithDataList(inputList, [1, 3, 224, 224]);
-    final inputs = {'input': inputOrt};
+    final inputs = {'image': inputOrt};
     final session = OrtSession.fromAddress(args["address"]);
     final runOptions = OrtRunOptions();
     final outputs = session.run(runOptions, inputs);
