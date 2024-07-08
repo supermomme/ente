@@ -70,6 +70,7 @@ http:
     # If true, bind to 443 and use TLS.
     # By default, this is false, and museum will bind to 8080 without TLS.
     # use-tls: true
+    port: 8080
 
 # Specify the base endpoints for various apps
 apps:
